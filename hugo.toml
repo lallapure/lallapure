@@ -1,7 +1,6 @@
 baseURL = "https://lallapure.com/"
 languageCode = "zh-TW"
 title = "LALLAPURE"
-theme = ""
 enableRobotsTXT = true
 paginate = 12
 
