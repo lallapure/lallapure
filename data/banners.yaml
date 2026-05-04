@@ -1,0 +1,31 @@
+# 首頁輪播 Banner 設定
+# 每個項目對應一張 banner 卡
+# url 可以填作品連結或文章連結
+
+- emoji: "🕊"
+  tag: "我的鴿子姊姊"
+  eyebrow: "LATEST UPDATE · 2024.05.20"
+  title: "鴿子姊姊外傳 上線"
+  sub: "漫畫 · 4 話 · 點此閱讀"
+  url: "/works/pigeon-sister-extra/"
+
+- emoji: "🌊"
+  tag: "小遙"
+  eyebrow: "SERIES · 連載中"
+  title: "小遙漂流記"
+  sub: "漫畫 · 5 話 · 持續更新中"
+  url: "/works/xiao-yao/"
+
+- emoji: "📖"
+  tag: "商店"
+  eyebrow: "SHOP · 限時優惠"
+  title: "電子書 Vol.1 發售中"
+  sub: "5/31 截止 · 前往購買"
+  url: "/shop/"
+
+- emoji: "🌸"
+  tag: "小美"
+  eyebrow: "ILLUSTRATION"
+  title: "小美的日記"
+  sub: "插圖系列 · 查看作品"
+  url: "/works/xiao-mei-diary/"

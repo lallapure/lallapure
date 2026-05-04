@@ -1,0 +1,25 @@
+<a class="work-card" href="{{ .RelPermalink }}">
+  <div class="work-thumb">
+    {{ if .Params.cover }}
+    <img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy" />
+    {{ else }}
+    <div class="work-thumb-placeholder">{{ default "✦" .Params.emoji }}</div>
+    {{ end }}
+  </div>
+  <div class="work-info">
+    <div class="work-tag-row">
+      {{ range .Params.tags }}
+      <span class="work-tag">#{{ . }}</span>
+      {{ end }}
+    </div>
+    <div class="work-title">{{ .Title }}</div>
+    <div class="work-meta">
+      <span class="work-date">{{ .Date.Format "2006-01-02" }}</span>
+      {{ if eq .Params.type "comic" }}
+      <span class="work-type">漫畫 · {{ default 1 .Params.episodes }} ep</span>
+      {{ else }}
+      <span class="work-type">插圖</span>
+      {{ end }}
+    </div>
+  </div>
+</a>

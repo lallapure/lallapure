@@ -1,0 +1,17 @@
+# 商店商品列表
+# thumb: Cloudinary 或其他圖片網址（可留空）
+# url: 購買頁面外部連結
+
+- name: "電子書 Vol.1"
+  desc: "我的鴿子姊姊精選合訂本，附贈幕後花絮與草稿頁。"
+  badge: "限時優惠"
+  emoji: "📖"
+  thumb: ""
+  url: "https://your-shop-link.com/ebook-vol1"
+
+- name: "明信片組"
+  desc: "限量角色明信片 4 入組，手工裝袋發售。"
+  badge: ""
+  emoji: "🖼"
+  thumb: ""
+  url: "https://your-shop-link.com/postcards"

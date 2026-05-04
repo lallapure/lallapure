@@ -1,0 +1,9 @@
+<footer class="footer">
+  <div class="footer-logo">LALLAPURE</div>
+  <div class="footer-links">
+    {{ range site.Menus.main }}
+    <a href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}
+  </div>
+  <div class="footer-copy">© {{ site.Params.since }}–{{ now.Format "2006" }} LALLAPURE</div>
+</footer>

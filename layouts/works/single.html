@@ -1,0 +1,75 @@
+{{ define "main" }}
+{{ $episodes := .Params.episodes | default 1 }}
+{{ $currentEp := 1 }}
+
+<div class="reader-header">
+  <a class="back-btn" href="/works/">← 返回作品集 Back</a>
+  <span class="reader-title">{{ .Title }}</span>
+  {{ if gt $episodes 1 }}
+  <div class="chapter-nav" id="chapterNav">
+    {{ range seq $episodes }}
+    <button class="ch-btn{{ if eq . 1 }} current{{ end }}"
+            data-ep="{{ . }}"
+            onclick="goChapter({{ . }})">
+      {{ printf "%02d" . }}
+    </button>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+
+<div class="reader-body">
+  {{ if eq .Params.type "comic" }}
+
+  {{/* Comic reader — images per episode stored in front matter */}}
+  {{ range $i, $ep := .Params.episode_images }}
+  <div class="episode-block" id="ep{{ add $i 1 }}"
+       style="{{ if ne $i 0 }}display:none{{ end }}">
+    <p class="chapter-title">第{{ printf "%02d" (add $i 1) }}話 · EP.{{ printf "%02d" (add $i 1) }}</p>
+    <div class="comic-strip">
+      {{ range $ep }}
+      <img class="comic-page" src="{{ . }}" alt="" loading="lazy" />
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  {{ if gt $episodes 1 }}
+  <div class="page-nav">
+    <button class="page-nav-btn" id="prevEp" onclick="changeEp(-1)">← 上一話 Prev</button>
+    <button class="page-nav-btn" id="nextEp" onclick="changeEp(1)">下一話 Next →</button>
+  </div>
+  {{ end }}
+
+  {{ else }}
+  {{/* Illustration + prose */}}
+  <article class="prose-body">
+    {{ if .Params.cover }}
+    <img class="illust-cover" src="{{ .Params.cover }}" alt="{{ .Title }}" />
+    {{ end }}
+    {{ .Content }}
+  </article>
+  {{ end }}
+</div>
+
+<script>
+const totalEp = {{ $episodes }};
+let curEp = 1;
+function showEp(n) {
+  document.querySelectorAll('.episode-block').forEach((el,i) => {
+    el.style.display = (i+1 === n) ? 'block' : 'none';
+  });
+  document.querySelectorAll('.ch-btn').forEach(b => {
+    b.classList.toggle('current', parseInt(b.dataset.ep) === n);
+  });
+  const prev = document.getElementById('prevEp');
+  const next = document.getElementById('nextEp');
+  if (prev) prev.style.visibility = n > 1 ? 'visible' : 'hidden';
+  if (next) next.style.visibility = n < totalEp ? 'visible' : 'hidden';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function goChapter(n) { curEp = n; showEp(n); }
+function changeEp(d) { curEp = Math.max(1, Math.min(totalEp, curEp + d)); showEp(curEp); }
+showEp(1);
+</script>
+{{ end }}

@@ -1,0 +1,52 @@
+baseURL = "https://lallapure.com/"
+languageCode = "zh-TW"
+title = "LALLAPURE"
+theme = ""
+enableRobotsTXT = true
+paginate = 12
+
+[params]
+  author = "LALLAPURE"
+  description = "用線條說故事的人。漫畫、插圖、還有一些說不清楚的東西。"
+  since = "2024"
+  email = "hello@lallapure.com"
+
+  [params.social]
+    instagram = "https://instagram.com/lallapure"
+    twitter   = "https://twitter.com/lallapure"
+    threads   = "https://threads.net/@lallapure"
+    patreon   = "https://patreon.com/lallapure"
+
+[menu]
+  [[menu.main]]
+    name       = "首頁"
+    nameEn     = "HOME"
+    url        = "/"
+    weight     = 1
+  [[menu.main]]
+    name       = "作品集"
+    nameEn     = "WORKS"
+    url        = "/works/"
+    weight     = 2
+  [[menu.main]]
+    name       = "文章"
+    nameEn     = "BLOG"
+    url        = "/blog/"
+    weight     = 3
+  [[menu.main]]
+    name       = "商店"
+    nameEn     = "SHOP"
+    url        = "/shop/"
+    weight     = 4
+  [[menu.main]]
+    name       = "關於我"
+    nameEn     = "ABOUT"
+    url        = "/about/"
+    weight     = 5
+
+[taxonomies]
+  tag = "tags"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true

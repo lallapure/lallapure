@@ -1,0 +1,22 @@
+# 首頁公告列表
+# linkText 不填則預設顯示「閱讀全文 →」
+
+- date: "2024.05.20"
+  event: "《鴿子姊姊外傳》第一話上線！"
+  url: "/blog/pigeon-extra-launch/"
+  linkText: "閱讀全文 →"
+
+- date: "2024.05.10"
+  event: "電子書 Vol.1 限時優惠開始，至 5/31 止"
+  url: "/shop/"
+  linkText: "前往商店 →"
+
+- date: "2024.04.20"
+  event: "明信片周邊第二批補貨，數量有限"
+  url: "/shop/"
+  linkText: "前往商店 →"
+
+- date: "2024.04.01"
+  event: "《小遙漂流記》正式連載開始"
+  url: "/blog/xiao-yao-launch/"
+  linkText: "閱讀全文 →"

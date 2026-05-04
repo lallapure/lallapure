@@ -1,0 +1,21 @@
+<nav class="nav">
+  <a class="nav-logo" href="/">LALLAPURE</a>
+  <div class="nav-links">
+    {{ range site.Menus.main }}
+    <a class="nav-item{{ if eq $.RelPermalink .URL }} active{{ end }}" href="{{ .URL }}">
+      <span class="zh">{{ .Name }}</span>
+      <span class="en">{{ .Params.nameEn }}</span>
+    </a>
+    {{ end }}
+  </div>
+  <button class="nav-hamburger" aria-label="選單" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  {{ range site.Menus.main }}
+  <a class="nav-mobile-item" href="{{ .URL }}">
+    {{ .Name }} <span>{{ .Params.nameEn }}</span>
+  </a>
+  {{ end }}
+</div>

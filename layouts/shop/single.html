@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="section">
+  <p class="section-label">商店 · SHOP</p>
+  <div class="shop-grid">
+    {{ range .Site.Data.products }}
+    <div class="shop-card">
+      {{ if .thumb }}
+      <div class="shop-thumb"><img src="{{ .thumb }}" alt="{{ .name }}" /></div>
+      {{ else }}
+      <div class="shop-thumb shop-thumb-placeholder">{{ default "✦" .emoji }}</div>
+      {{ end }}
+      <h3 class="shop-name">{{ .name }}</h3>
+      {{ with .badge }}<span class="shop-badge">{{ . }}</span>{{ end }}
+      <p class="shop-desc">{{ .desc }}</p>
+      <a class="shop-btn" href="{{ .url }}" target="_blank" rel="noopener">
+        前往購買 · BUY →
+      </a>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

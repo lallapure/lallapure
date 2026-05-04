@@ -1,0 +1,69 @@
+{{ define "main" }}
+
+{{/* ── HERO BANNER (輪播) ── */}}
+{{ $banners := .Site.Data.banners }}
+{{ if $banners }}
+<section class="hero-banner-wrap">
+  <div class="hero-banner">
+    <div class="banner-slides" id="bannerSlides">
+      {{ range $banners }}
+      <a class="banner-slide" href="{{ .url }}">
+        <div class="slide-bg">{{ .emoji }}</div>
+        <div class="slide-content">
+          <span class="slide-tag">{{ .tag }}</span>
+          <p class="slide-eyebrow">{{ .eyebrow }}</p>
+          <h2 class="slide-title">{{ .title }}</h2>
+          <p class="slide-sub">{{ .sub }}</p>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    <div class="banner-nav">
+      <button class="banner-arr" onclick="moveBanner(-1)" aria-label="上一張">‹</button>
+      <div class="banner-dots" id="bannerDots"></div>
+      <button class="banner-arr" onclick="moveBanner(1)" aria-label="下一張">›</button>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* ── HERO TEXT ── */}}
+<div class="hero-text">
+  <p class="hero-eyebrow">CREATOR · ILLUSTRATOR</p>
+  <h1 class="hero-name">LALLAPURE</h1>
+  <p class="hero-desc">{{ site.Params.description }}</p>
+</div>
+
+{{/* ── 公告 ── */}}
+{{ $notices := .Site.Data.notices }}
+{{ if $notices }}
+<section class="announce-section">
+  <p class="section-label">公告 · NOTICE</p>
+  <div class="announce-list">
+    {{ range $notices }}
+    <div class="announce-item">
+      <span class="ann-date">{{ .date }}</span>
+      <span class="ann-event">{{ .event }}</span>
+      {{ if .url }}<a class="ann-link" href="{{ .url }}">{{ default "閱讀全文 →" .linkText }}</a>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* ── 最新作品 ── */}}
+<section class="section">
+  <p class="section-label">最新作品 · LATEST</p>
+  <div class="works-grid">
+    {{ $works := where site.RegularPages "Section" "works" }}
+    {{ $sorted := $works.ByDate.Reverse }}
+    {{ range first 4 $sorted }}
+    {{ partial "work-card.html" . }}
+    {{ end }}
+  </div>
+  <div style="text-align:center;margin-top:1.5rem">
+    <a class="btn-outline" href="/works/">全部作品 · All Works →</a>
+  </div>
+</section>
+
+{{ end }}

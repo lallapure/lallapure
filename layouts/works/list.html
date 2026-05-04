@@ -1,0 +1,53 @@
+{{ define "main" }}
+<section class="section">
+  <p class="section-label">作品集 · WORKS</p>
+
+  {{/* Tag filter */}}
+  <div class="tag-bar" id="tagBar">
+    <button class="tag active" data-tag="all" onclick="filterTag(this)">全部 All</button>
+    {{ range site.Taxonomies.tags }}
+    <button class="tag" data-tag="{{ .Page.Title }}" onclick="filterTag(this)">{{ .Page.Title }}</button>
+    {{ end }}
+  </div>
+
+  {{/* Sort */}}
+  <div class="sort-bar">
+    <span class="sort-label">排序 Sort：</span>
+    <button class="sort-btn active" onclick="sortWorks('desc',this)">最新 Newest</button>
+    <button class="sort-btn" onclick="sortWorks('asc',this)">最舊 Oldest</button>
+  </div>
+
+  {{/* Works grid — render all, JS handles filtering/sorting */}}
+  <div class="works-grid" id="worksGrid">
+    {{ $works := where site.RegularPages "Section" "works" }}
+    {{ range $works.ByDate.Reverse }}
+    <a class="work-card"
+       href="{{ .RelPermalink }}"
+       data-tags="{{ delimit .Params.tags "," }}"
+       data-date="{{ .Date.Format "2006-01-02" }}">
+      <div class="work-thumb">
+        {{ if .Params.cover }}
+        <img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy" />
+        {{ else }}
+        <div class="work-thumb-placeholder">{{ default "✦" .Params.emoji }}</div>
+        {{ end }}
+      </div>
+      <div class="work-info">
+        <div class="work-tag-row">
+          {{ range .Params.tags }}<span class="work-tag">#{{ . }}</span>{{ end }}
+        </div>
+        <div class="work-title">{{ .Title }}</div>
+        <div class="work-meta">
+          <span class="work-date">{{ .Date.Format "2006-01-02" }}</span>
+          {{ if eq .Params.type "comic" }}
+          <span class="work-type">漫畫 · {{ default 1 .Params.episodes }} ep</span>
+          {{ else }}
+          <span class="work-type">插圖</span>
+          {{ end }}
+        </div>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

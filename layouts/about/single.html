@@ -1,0 +1,23 @@
+{{ define "main" }}
+<section class="section">
+  <div class="about-wrap">
+    <div class="about-section">
+      <p class="about-h">關於我 · ABOUT</p>
+      <div class="about-p">{{ .Content }}</div>
+    </div>
+    <div class="about-section">
+      <p class="about-h">社群連結 · SOCIAL</p>
+      <div class="social-links">
+        {{ with site.Params.social.instagram }}<a class="social-link" href="{{ . }}" target="_blank">Instagram</a>{{ end }}
+        {{ with site.Params.social.twitter }}<a class="social-link" href="{{ . }}" target="_blank">Twitter / X</a>{{ end }}
+        {{ with site.Params.social.threads }}<a class="social-link" href="{{ . }}" target="_blank">Threads</a>{{ end }}
+        {{ with site.Params.social.patreon }}<a class="social-link" href="{{ . }}" target="_blank">Patreon</a>{{ end }}
+      </div>
+    </div>
+    <div class="about-section">
+      <p class="about-h">合作洽詢 · CONTACT</p>
+      <p class="about-p"><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
+    </div>
+  </div>
+</section>
+{{ end }}
