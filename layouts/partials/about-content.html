@@ -1,0 +1,85 @@
+<div class="about-page">
+
+  <div class="about-hero">
+    <div class="about-hero-text">
+      <p class="about-eyebrow">CREATOR · ILLUSTRATOR</p>
+      <h1 class="about-name">LALLAPURE</h1>
+      <div class="about-bio">
+        <p>大家好，我是 LAMU 拉姆。這是我的個人網站，以原創 OC（Original Character）為主。</p>
+        <p>
+          <span class="about-badge">BG</span>
+          <span class="about-badge">TL</span>
+          <span class="about-badge">BL</span>
+        </p>
+        <p>目前以《我的鴿子姊姊》為主軸，開始新的篇章、帶出人物故事。</p>
+        <div class="about-milestone">
+          <strong>《我們開店了！》《我的鴿子姊姊》</strong><br>
+          在巴哈累積一百萬閱覽，謝謝大家！
+        </div>
+      </div>
+      <div class="about-tmi">
+        <p class="about-tmi-label">TMI</p>
+        <p class="about-tmi-row">🐦 鳥派 + 狗派　🍚 白飯 · 義大利麵 · 拉麵</p>
+        <p class="about-tmi-row">☕ 拿鐵愛好者 · 美式拒絕往來戶</p>
+        <p class="about-tmi-row">🦋 脾氣很好但界線清楚的 INFP</p>
+      </div>
+    </div>
+    <div class="about-avatar-wrap">
+      <div class="about-avatar">
+        <img src="{{ "images/avatar.jpg" | relURL }}" alt="LAMU 拉姆" />
+      </div>
+      <p class="about-avatar-name">LAMU · 拉姆</p>
+    </div>
+  </div>
+
+  <div class="about-body">
+
+    <div class="about-block">
+      <p class="block-label">社群連結 · SOCIAL</p>
+      <div class="social-grid">
+        {{ range site.Params.socialLinks }}
+        <a class="social-card" href="{{ .url }}" target="_blank" rel="noopener">
+          <div class="social-icon">{{ .icon }}</div>
+          <div class="social-info">
+            <div class="social-name">{{ .name }}</div>
+            <div class="social-handle">{{ .handle }}</div>
+          </div>
+        </a>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="about-block">
+      <p class="block-label">常見問題 · FAQ</p>
+      <div class="faq-list">
+        {{ range site.Params.faq }}
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            {{ .q }}<span class="faq-arrow">›</span>
+          </div>
+          <div class="faq-a">{{ .a }}</div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="about-block">
+      <p class="block-label">合作洽詢 · CONTACT</p>
+      <div class="contact-card">
+        <div>
+          <p class="contact-lbl">EMAIL</p>
+          <p class="contact-email">{{ site.Params.email }}</p>
+          <p class="contact-desc">商業合作、授權詢問歡迎來信，<br>通常 3–5 個工作天內回覆。</p>
+        </div>
+        <a class="contact-btn" href="mailto:{{ site.Params.email }}">寄信 · MAIL →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+</script>
